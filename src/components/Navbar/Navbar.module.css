@@ -1,0 +1,22 @@
+/* Navbar container */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100px;
+  background-color: rgb(102, 101, 101);
+}
+
+.title {
+  color: white;
+  font-size: 3rem;
+}
+
+/* Cart Icon */
+.cart {
+  position: absolute;
+  right: 5%;
+
+  color: white;
+}
