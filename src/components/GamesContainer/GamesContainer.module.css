@@ -1,0 +1,6 @@
+.games-container {
+  background-color: rgb(212, 212, 212);
+
+  /* Lets the games container take up the rest of the page */
+  flex-grow: 1;
+}
