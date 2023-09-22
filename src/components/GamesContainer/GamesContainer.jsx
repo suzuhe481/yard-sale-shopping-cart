@@ -37,6 +37,7 @@ const GamesContainer = () => {
   const GameCards = gamesData.map((game) => (
     <GameCard
       key={game.id}
+      id={game.id}
       name={game.name}
       platforms={game.platforms}
       image={game.image}
