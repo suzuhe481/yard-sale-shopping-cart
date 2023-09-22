@@ -6,6 +6,9 @@
 
   height: 100px;
   background-color: rgb(102, 101, 101);
+
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .title {
