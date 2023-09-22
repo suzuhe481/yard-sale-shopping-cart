@@ -14,12 +14,42 @@
 .title {
   color: white;
   font-size: 3rem;
+
+  cursor: pointer;
+
+  text-decoration: none;
 }
 
 /* Cart Icon */
 .cart {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2px;
+
+  cursor: pointer;
+
   position: absolute;
   right: 5%;
 
   color: white;
+
+  font-size: 2rem;
+  text-decoration: none;
+
+  padding: 10px;
+}
+
+/* Item counter for cart */
+.counter {
+  /* Positions counter to the upper right of cart icon */
+  position: relative;
+  top: -15px;
+
+  font-size: 1rem;
+
+  border: 1.5px solid white;
+  border-radius: 1000px;
+
+  padding: 2px;
 }
