@@ -2,9 +2,12 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
-  background-color: rgb(212, 212, 212);
+  justify-content: space-evenly;
+  gap: 15px;
 
   /* Lets the games container take up the rest of the page */
   flex-grow: 1;
+
+  background-color: rgb(212, 212, 212);
+  padding: 20px 0;
 }
