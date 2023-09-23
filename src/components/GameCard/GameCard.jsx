@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+import AddToCartButton from "../AddToCartButton/AddToCartButton";
+
 import styles from "./GameCard.module.css";
 
 const GameCard = (props) => {
@@ -16,6 +18,7 @@ const GameCard = (props) => {
       </div>
       <p>{name}</p>
       <p>{platforms}</p>
+      <AddToCartButton game={props} />
     </div>
   );
 };
