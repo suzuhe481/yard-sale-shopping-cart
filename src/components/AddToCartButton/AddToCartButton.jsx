@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+import styles from "./AddToCartButton.module.css";
+
 const addGameToCart = (game) => {
   // Get cart from localStorage
   var cart = JSON.parse(localStorage.getItem("cart"));
@@ -48,7 +50,11 @@ const addGameToCart = (game) => {
 };
 
 const AddToCartButton = (props) => {
-  return <button onClick={() => addGameToCart(props.game)}>Add To Cart</button>;
+  return (
+    <button className={styles.button} onClick={() => addGameToCart(props.game)}>
+      Add To Cart
+    </button>
+  );
 };
 
 AddToCartButton.propTypes = {
