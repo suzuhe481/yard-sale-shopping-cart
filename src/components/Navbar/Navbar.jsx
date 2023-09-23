@@ -10,7 +10,7 @@ const Navbar = () => {
       </Link>
       <Link to="/cart" className={styles.cart}>
         <i className="fa-solid fa-cart-shopping"></i>
-        <div className={styles.counter}>123</div>
+        {/* <div className={styles.counter}>123</div> */}
       </Link>
     </div>
   );
