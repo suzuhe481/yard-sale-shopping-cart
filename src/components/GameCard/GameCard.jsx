@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 import AddToCartButton from "../AddToCartButton/AddToCartButton";
+import PlatformsList from "./PlatformsList/PlatformsList";
 
 import styles from "./GameCard.module.css";
 
@@ -9,15 +10,16 @@ const GameCard = (props) => {
   const id = props.id;
   const image = props.image;
   const platforms = props.platforms;
-  console.log(props);
 
   return (
     <div className={styles.card} value={id}>
       <div className={styles["image-container"]}>
         <img className={styles.image} src={image} alt="Game art" />
       </div>
-      <p>{name}</p>
-      <p>{platforms}</p>
+      <p className={styles.name}>{name}</p>
+      {/* <p className={styles.platforms}>{platforms}</p> */}
+      <PlatformsList platforms={platforms} />
+
       <AddToCartButton game={props} />
     </div>
   );
