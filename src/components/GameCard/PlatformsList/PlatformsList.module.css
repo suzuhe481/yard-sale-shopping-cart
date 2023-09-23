@@ -1,0 +1,18 @@
+.platforms-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.platform {
+  border: 1px solid black;
+
+  padding: 2px;
+  margin: 1px;
+
+  font-size: 1.1rem;
+
+  background-color: rgb(85, 85, 85);
+  color: white;
+}
