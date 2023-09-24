@@ -18,10 +18,22 @@ const CartListItem = (props) => {
       <div className={styles["image-container"]}>
         <img className={styles.image} src={image} alt="Game art" />
       </div>
-      <span>{name}</span>
-      <span>${price}</span>
-      <span>Quantity: {quantity}</span>
-      <span>Total: {total}</span>
+      <div className={styles["name-container"]}>
+        <div>{name}</div>
+      </div>
+      <div className={styles["price-container"]}>
+        <div>${price}</div>
+      </div>
+      <div className={styles["quantity-container"]}>
+        <div>Quantity: {quantity}</div>
+        <div className={styles["buttons-container"]}>
+          <button>Edit</button>
+          <button>Delete</button>
+        </div>
+      </div>
+      <div className={styles["total-container"]}>
+        <div>Total: {total}</div>
+      </div>
     </div>
   );
 };
