@@ -11,11 +11,41 @@
 }
 
 .image-container {
-  height: 100px;
-  width: 100px;
+  width: 200px;
+  height: auto;
+
+  padding: 5px;
 }
 
 .image {
   height: 100%;
+  width: 100%;
+
+  border-radius: 10px;
+}
+
+.name-container,
+.price-container,
+.quantity-container,
+.total-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding-top: 25px;
+  padding-left: 15px;
+
+  font-size: 1.5rem;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  gap: 15px;
+
+  padding-top: 15px;
+
   width: 100%;
 }
