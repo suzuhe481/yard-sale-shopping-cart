@@ -1,31 +1,34 @@
 .cart-list-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
 
   height: 150px;
+  min-width: 90vw;
 
   border: 3px solid black;
   margin: 5px;
 
   border-radius: 10px;
+
+  overflow-y: auto;
+  padding: 10px;
 }
 
 .image-container {
   width: 200px;
   height: auto;
-
-  padding: 5px;
 }
 
 .image {
   height: 100%;
   width: 100%;
 
+  object-fit: cover;
+
   border-radius: 10px;
 }
 
-.name-container,
-.price-container,
+.name-price-container,
 .quantity-container,
 .total-container {
   display: flex;
@@ -35,7 +38,7 @@
   padding-top: 25px;
   padding-left: 15px;
 
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .buttons-container {
