@@ -2,11 +2,31 @@ import PropTypes from "prop-types";
 
 import styles from "./CartListItem.module.css";
 
+const removeItemFromCart = (id) => {
+  // Get cart from localStorage
+  var cart = JSON.parse(localStorage.getItem("cart"));
+
+  for (var i = 0; i < cart.length; i++) {
+    var gameInCart = cart[i];
+
+    // Removes game in cart when id matches
+    if (gameInCart.id === id) {
+      cart.splice(i, 1);
+      break;
+    }
+  }
+
+  // Update localStorage
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  location.reload();
+};
+
 const CartListItem = (props) => {
   const item = props.item;
 
   const name = item.name;
-  //   const id = item.id;
+  const id = item.id;
   const image = item.image;
   const price = item.price;
   const quantity = item.quantity;
@@ -26,7 +46,7 @@ const CartListItem = (props) => {
         <div>Quantity: {quantity}</div>
         <div className={styles["buttons-container"]}>
           <button>Edit</button>
-          <button>Delete</button>
+          <button onClick={() => removeItemFromCart(id)}>Delete</button>
         </div>
       </div>
       <div className={styles["total-container"]}>
