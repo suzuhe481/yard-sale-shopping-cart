@@ -9,18 +9,19 @@ const addGameToCart = (game) => {
   const gameId = game.id;
 
   var addNewItem = false;
-  for (var i = 0; i < cart.length; i++) {
+  for (var i = 0; i <= cart.length; i++) {
     var gameInCart = cart[i];
+
+    // If reached end of cart, game is not in cart.
+    if (i === cart.length) {
+      addNewItem = true;
+      break;
+    }
 
     // If game is already in cart, increment quantity by 1.
     if (gameInCart.id === gameId) {
       cart[i].quantity += 1;
       break;
-    }
-
-    // If game is not in cart.
-    if (i === cart.length - 1) {
-      addNewItem = true;
     }
   }
 
