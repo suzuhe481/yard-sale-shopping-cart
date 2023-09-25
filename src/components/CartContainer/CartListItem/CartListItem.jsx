@@ -18,10 +18,8 @@ const CartListItem = (props) => {
       <div className={styles["image-container"]}>
         <img className={styles.image} src={image} alt="Game art" />
       </div>
-      <div className={styles["name-container"]}>
+      <div className={styles["name-price-container"]}>
         <div>{name}</div>
-      </div>
-      <div className={styles["price-container"]}>
         <div>${price}</div>
       </div>
       <div className={styles["quantity-container"]}>
