@@ -2,6 +2,8 @@
 
 This is a mock video game store front made with React. You can browse a short selection of video games and add them to your cart.
 
+[You can check out the store by clicking here.](https://yard-sale-shopping-cart.pages.dev/)
+
 Nothing in the store is actually available for purchase.
 
 ## Description
