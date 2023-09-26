@@ -1,8 +1,11 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 import styles from "./CartListItem.module.css";
 
-const removeItemFromCart = (id) => {
+// Completely removes an item from cart.
+const removeItemFromCart = (props) => {
+  const id = props.id;
   // Get cart from localStorage
   var cart = JSON.parse(localStorage.getItem("cart"));
 
@@ -16,10 +19,24 @@ const removeItemFromCart = (id) => {
     }
   }
 
+  props.setQuantity(0);
+
   // Update localStorage
   localStorage.setItem("cart", JSON.stringify(cart));
+};
 
-  location.reload();
+// Edits the quantity of a cart item.
+const editCartItem = (props) => {
+  event.preventDefault();
+
+  const newItemQuantity = event.target[0].value;
+
+  if (newItemQuantity < 1 || newItemQuantity > 12) {
+    return;
+  }
+
+  props.setIsEditing(false);
+  props.setQuantity(newItemQuantity);
 };
 
 const CartListItem = (props) => {
@@ -29,9 +46,40 @@ const CartListItem = (props) => {
   const id = item.id;
   const image = item.image;
   const price = item.price;
-  const quantity = item.quantity;
+
+  const [quantity, setQuantity] = useState(item.quantity);
+  const [isEditing, setIsEditing] = useState(false);
 
   const total = price * quantity;
+
+  var buttonsContainerElements;
+  if (isEditing) {
+    buttonsContainerElements = (
+      <form
+        onSubmit={() => {
+          editCartItem({ setQuantity, setIsEditing });
+        }}
+      >
+        <label htmlFor="quantity-number"></label>
+        <input type="number" id="quantity-number" min="1" max="10" />
+        <input type="submit" />
+      </form>
+    );
+  } else {
+    buttonsContainerElements = (
+      <>
+        <button onClick={() => setIsEditing(true)}>Edit</button>
+        <button onClick={() => removeItemFromCart({ id, setQuantity })}>
+          Delete
+        </button>
+      </>
+    );
+  }
+
+  // Returns nothing if quantity is empty;
+  if (quantity === 0) {
+    return <></>;
+  }
 
   return (
     <div className={styles["cart-list-item"]}>
@@ -45,8 +93,7 @@ const CartListItem = (props) => {
       <div className={styles["quantity-container"]}>
         <div>Quantity: {quantity}</div>
         <div className={styles["buttons-container"]}>
-          <button>Edit</button>
-          <button onClick={() => removeItemFromCart(id)}>Delete</button>
+          {buttonsContainerElements}
         </div>
       </div>
       <div className={styles["total-container"]}>
