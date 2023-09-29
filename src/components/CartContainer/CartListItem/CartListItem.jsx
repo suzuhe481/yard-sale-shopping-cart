@@ -1,67 +1,50 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../../../CartProvider";
 
 import styles from "./CartListItem.module.css";
 
-// Completely removes an item from cart.
-const removeItemFromCart = (props) => {
-  const id = props.id;
-  // Get cart from localStorage
-  var cart = JSON.parse(localStorage.getItem("cart"));
-
-  for (var i = 0; i < cart.length; i++) {
-    var gameInCart = cart[i];
-
-    // Removes game in cart when id matches
-    if (gameInCart.id === id) {
-      cart.splice(i, 1);
-      break;
-    }
-  }
-
-  props.setQuantity(0);
-
-  // Update localStorage
-  localStorage.setItem("cart", JSON.stringify(cart));
-};
-
-// Edits the quantity of a cart item.
-const editCartItem = (props) => {
-  event.preventDefault();
-
-  const newItemQuantity = event.target[0].value;
-
-  if (newItemQuantity < 1 || newItemQuantity > 12) {
-    return;
-  }
-
-  props.setIsEditing(false);
-  props.setQuantity(newItemQuantity);
-};
-
 const CartListItem = (props) => {
+  const { removeFromCart, editCart } = useContext(CartContext);
+
   const item = props.item;
 
   const name = item.name;
-  const id = item.id;
   const image = item.image;
   const price = item.price;
 
   const [quantity, setQuantity] = useState(item.quantity);
   const [isEditing, setIsEditing] = useState(false);
 
-  const total = price * quantity;
+  const itemTotal = (price * quantity).toFixed(2);
+
+  // Returns nothing if quantity is empty;
+  if (quantity === 0) {
+    return <></>;
+  }
+
+  // Handles value changes to the item quantity input element.
+  function handleQuantityChange(event) {
+    setQuantity(event.target.value);
+  }
 
   var buttonsContainerElements;
   if (isEditing) {
     buttonsContainerElements = (
       <form
         onSubmit={() => {
-          editCartItem({ setQuantity, setIsEditing });
+          editCart({ item, setQuantity, setIsEditing });
         }}
       >
         <label htmlFor="quantity-number"></label>
-        <input type="number" id="quantity-number" min="1" max="10" />
+        <input
+          type="number"
+          id="quantity-number"
+          min="1"
+          max="10"
+          value={quantity}
+          onChange={handleQuantityChange}
+        />
         <input type="submit" />
       </form>
     );
@@ -69,16 +52,9 @@ const CartListItem = (props) => {
     buttonsContainerElements = (
       <>
         <button onClick={() => setIsEditing(true)}>Edit</button>
-        <button onClick={() => removeItemFromCart({ id, setQuantity })}>
-          Delete
-        </button>
+        <button onClick={() => removeFromCart(props.item)}>Delete</button>
       </>
     );
-  }
-
-  // Returns nothing if quantity is empty;
-  if (quantity === 0) {
-    return <></>;
   }
 
   return (
@@ -97,7 +73,7 @@ const CartListItem = (props) => {
         </div>
       </div>
       <div className={styles["total-container"]}>
-        <div>Total: {total}</div>
+        <div>Total: {itemTotal}</div>
       </div>
     </div>
   );
