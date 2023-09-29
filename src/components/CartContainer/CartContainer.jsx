@@ -1,19 +1,21 @@
 import CartListItem from "./CartListItem/CartListItem";
 
+import { useContext } from "react";
+import { CartContext } from "../../CartProvider";
+
 import styles from "./CartContainer.module.css";
 
 const CartContainer = () => {
-  // Get cart from localStorage
-  const cartData = JSON.parse(localStorage.getItem("cart"));
+  const { cart, cartTotal } = useContext(CartContext);
 
-  const CartList = cartData.map((item) => (
+  const CartList = cart.map((item) => (
     <CartListItem key={item.id} item={item} />
   ));
 
   return (
     <div className={styles["cart-container"]}>
       <div>
-        <p className={styles["cart-title"]}>Your Cart</p>
+        <p className={styles["cart-title"]}>Your Cart - ${cartTotal}</p>
       </div>
       <div>{CartList}</div>
     </div>
