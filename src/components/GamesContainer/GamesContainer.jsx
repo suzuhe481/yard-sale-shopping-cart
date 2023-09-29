@@ -12,6 +12,7 @@ const readData = () => {
   const games = [];
 
   // Gets each games id, name, background image, and platforms.
+  // Hardcoded price added since API doesn't supply price.
   gamesJSON.forEach((game) => {
     const gameObject = {};
 
@@ -24,6 +25,7 @@ const readData = () => {
       platforms.push(platform.platform.name);
     });
     gameObject.platforms = platforms;
+    gameObject.price = 59.99;
 
     games.push(gameObject);
   });
@@ -35,13 +37,7 @@ const GamesContainer = () => {
   const gamesData = readData();
 
   const GameCards = gamesData.map((game) => (
-    <GameCard
-      key={game.id}
-      id={game.id}
-      name={game.name}
-      platforms={game.platforms}
-      image={game.image}
-    />
+    <GameCard key={game.id} game={game} />
   ));
 
   return <div className={styles["games-container"]}>{GameCards}</div>;
