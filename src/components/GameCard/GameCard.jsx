@@ -6,10 +6,11 @@ import PlatformsList from "./PlatformsList/PlatformsList";
 import styles from "./GameCard.module.css";
 
 const GameCard = (props) => {
-  const name = props.name;
-  const id = props.id;
-  const image = props.image;
-  const platforms = props.platforms;
+  const game = props.game;
+  const name = game.name;
+  const id = game.id;
+  const image = game.image;
+  const platforms = game.platforms;
 
   return (
     <div className={styles.card} value={id}>
@@ -17,19 +18,15 @@ const GameCard = (props) => {
         <img className={styles.image} src={image} alt="Game art" />
       </div>
       <p className={styles.name}>{name}</p>
-      {/* <p className={styles.platforms}>{platforms}</p> */}
       <PlatformsList platforms={platforms} />
 
-      <AddToCartButton game={props} />
+      <AddToCartButton game={game} />
     </div>
   );
 };
 
 GameCard.propTypes = {
-  name: PropTypes.string,
-  id: PropTypes.number,
-  image: PropTypes.string,
-  platforms: PropTypes.array,
+  game: PropTypes.object,
 };
 
 export default GameCard;
