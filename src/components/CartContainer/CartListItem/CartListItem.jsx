@@ -38,6 +38,7 @@ const CartListItem = (props) => {
       >
         <label htmlFor="quantity-number"></label>
         <input
+          className={styles.input}
           type="number"
           id="quantity-number"
           min="1"
@@ -45,7 +46,7 @@ const CartListItem = (props) => {
           value={quantity}
           onChange={handleQuantityChange}
         />
-        <input type="submit" />
+        <input className={styles.submit} type="submit" />
       </form>
     );
   } else {
