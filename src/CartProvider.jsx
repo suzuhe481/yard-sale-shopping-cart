@@ -33,7 +33,7 @@ const CartProvider = (props) => {
     var totalItems = 0;
 
     for (var i = 0; i < cartData.length; i++) {
-      totalItems += cartData[i].quantity;
+      totalItems += Number(cartData[i].quantity);
     }
 
     return totalItems;
@@ -85,7 +85,7 @@ const CartProvider = (props) => {
     setCartTotal((prevTotal) => {
       return (Number(prevTotal) + Number(game.price)).toFixed(2);
     });
-    setCartAmountOfItems((prevAmont) => prevAmont + 1);
+    setCartAmountOfItems((prevAmount) => Number(prevAmount) + 1);
 
     // Update localStorage
     localStorage.setItem("cart", JSON.stringify(newCart));
@@ -160,7 +160,9 @@ const CartProvider = (props) => {
         Number(game.price) * Number(game.quantity)
       ).toFixed(2);
     });
-    setCartAmountOfItems((prevAmont) => prevAmont - game.quantity);
+    setCartAmountOfItems(
+      (prevAmont) => Number(prevAmont) - Number(game.quantity)
+    );
 
     // Update localStorage
     localStorage.setItem("cart", JSON.stringify(newCart));
