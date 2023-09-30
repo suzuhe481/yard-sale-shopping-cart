@@ -9,6 +9,7 @@ const GameCard = (props) => {
   const game = props.game;
   const name = game.name;
   const id = game.id;
+  const price = game.price;
   const image = game.image;
   const platforms = game.platforms;
 
@@ -20,7 +21,11 @@ const GameCard = (props) => {
       <p className={styles.name}>{name}</p>
       <PlatformsList platforms={platforms} />
 
-      <AddToCartButton game={game} />
+      <div className={styles["price-button-container"]}>
+        <div className={styles.price}>{price}</div>
+        <AddToCartButton game={game} />
+        <div className={styles["limit-notice"]}>Limit 10 per order</div>
+      </div>
     </div>
   );
 };
