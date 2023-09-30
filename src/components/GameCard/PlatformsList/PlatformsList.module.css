@@ -18,3 +18,10 @@
   background-color: rgb(85, 85, 85);
   color: white;
 }
+
+/* Stylings for mobile */
+@media screen and (max-width: 600px) {
+  .platform {
+    font-size: 1rem;
+  }
+}
