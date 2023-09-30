@@ -57,6 +57,11 @@ const CartProvider = (props) => {
 
       // If game is already in cart, increment quantity by 1.
       if (gameInCart.id === gameId) {
+        // If quantity is 10, do not increment
+        if (gameInCart.quantity === 10) {
+          return;
+        }
+
         newCart[i].quantity += 1;
         break;
       }
