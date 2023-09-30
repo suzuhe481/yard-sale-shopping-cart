@@ -5,9 +5,13 @@
   background-color: rgb(212, 212, 212);
 
   flex-grow: 1;
+
+  padding-bottom: 50px;
 }
 
 .cart-title {
+  padding-left: 20px;
+
   font-size: 2rem;
   font-weight: bold;
 
