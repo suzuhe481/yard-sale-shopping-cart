@@ -23,7 +23,7 @@ const GameCard = (props) => {
 
       <div className={styles["price-button-container"]}>
         <div className={styles.price}>${price}</div>
-        <AddToCartButton game={game} />
+        <AddToCartButton game={game} setItemAdded={props.setItemAdded} />
         <div className={styles["limit-notice"]}>Limit 10 per order</div>
       </div>
     </div>
@@ -32,6 +32,7 @@ const GameCard = (props) => {
 
 GameCard.propTypes = {
   game: PropTypes.object,
+  setItemAdded: PropTypes.func,
 };
 
 export default GameCard;
