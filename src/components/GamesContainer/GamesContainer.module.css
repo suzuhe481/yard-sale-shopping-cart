@@ -9,5 +9,12 @@
   flex-grow: 1;
 
   background-color: rgb(212, 212, 212);
-  padding: 20px 0;
+  padding: 20px 150px;
+}
+
+/* Stylings for mobile */
+@media screen and (max-width: 600px) {
+  .games-container {
+    padding: 20px 10px;
+  }
 }
