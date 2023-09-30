@@ -8,8 +8,17 @@ import styles from "./AddToCartButton.module.css";
 const AddToCartButton = (props) => {
   const { addToCart } = useContext(CartContext);
 
+  // SetItemAdded controls if ItemAddedModal is displayed/hidden.
+  const addToCartHandler = (game) => {
+    props.setItemAdded(true);
+    addToCart(game);
+  };
+
   return (
-    <button className={styles.button} onClick={() => addToCart(props.game)}>
+    <button
+      className={styles.button}
+      onClick={() => addToCartHandler(props.game, props.setItemAdded)}
+    >
       Add To Cart
     </button>
   );
@@ -17,6 +26,7 @@ const AddToCartButton = (props) => {
 
 AddToCartButton.propTypes = {
   game: PropTypes.object,
+  setItemAdded: PropTypes.func,
 };
 
 export default AddToCartButton;
