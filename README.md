@@ -14,6 +14,14 @@ This project was build using React to get practice with Routing and the State ho
 
 ## Releases
 
+### Release 2
+
+- Context hook is used to better pass values to components.
+- Counter besides shopping cart icon displays total amount of cart items.
+- Total cart price displayed in shopping cart.
+- Limited each item to 10 per order.
+- Mobile stylings
+
 ### Release 1
 
 - Can browse through select games.
