@@ -22,7 +22,7 @@ const GameCard = (props) => {
       <PlatformsList platforms={platforms} />
 
       <div className={styles["price-button-container"]}>
-        <div className={styles.price}>{price}</div>
+        <div className={styles.price}>${price}</div>
         <AddToCartButton game={game} />
         <div className={styles["limit-notice"]}>Limit 10 per order</div>
       </div>
