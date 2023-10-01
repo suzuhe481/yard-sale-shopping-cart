@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 
 import GameCard from "../GameCard/GameCard";
 import ItemAddedModal from "../UI/ItemAddedModal/ItemAddedModal";
+import ItemLimitModal from "../UI/ItemLimitModal/ItemLimitModal";
 import { CartContext } from "../../CartProvider";
 
 import styles from "./GamesContainer.module.css";
@@ -39,33 +40,41 @@ const readData = () => {
 
 const GamesContainer = () => {
   const [itemAdded, setItemAdded] = useState(false);
+  const [itemLimitReached, setItemLimitReached] = useState(false);
 
   const { cartAmountOfItems } = useContext(CartContext);
 
   const gamesData = readData();
 
   const GameCards = gamesData.map((game) => (
-    <GameCard key={game.id} game={game} setItemAdded={setItemAdded} />
+    <GameCard
+      key={game.id}
+      game={game}
+      setItemAdded={setItemAdded}
+      setItemLimitReached={setItemLimitReached}
+    />
   ));
 
   // Hides Item Added Modal
   useEffect(() => {
-    console.log(itemAdded);
-
-    // Timer to hide item added modal after set time.
+    // Timer to hide item added modal and item limit reached modal after set time.
     const timer = setTimeout(() => {
       setItemAdded(false);
+      setItemLimitReached(false);
     }, 1500);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [itemAdded, cartAmountOfItems]);
+  }, [itemAdded, cartAmountOfItems, itemLimitReached]);
 
   return (
     <>
       <div className={styles["games-container"]}>{GameCards}</div>;
       {itemAdded && <ItemAddedModal setItemAdded={setItemAdded} />}
+      {itemLimitReached && (
+        <ItemLimitModal setItemLimitReached={setItemLimitReached} />
+      )}
     </>
   );
 };
