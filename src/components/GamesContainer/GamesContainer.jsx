@@ -65,7 +65,7 @@ const GamesContainer = () => {
   return (
     <>
       <div className={styles["games-container"]}>{GameCards}</div>;
-      {itemAdded && <ItemAddedModal />}
+      {itemAdded && <ItemAddedModal setItemAdded={setItemAdded} />}
     </>
   );
 };
