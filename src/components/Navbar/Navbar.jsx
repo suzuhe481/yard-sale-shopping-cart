@@ -5,7 +5,7 @@ import { CartContext } from "../../CartProvider";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-  const { cartAmountOfItems } = useContext(CartContext);
+  const { cartAmountOfItems, cartTotal } = useContext(CartContext);
 
   return (
     <div className={styles.navbar}>
@@ -13,6 +13,9 @@ const Navbar = () => {
         Yard Sale
       </Link>
       <Link to="/cart" className={styles.cart}>
+        {cartAmountOfItems > 0 && (
+          <div className={styles.total}>${cartTotal}</div>
+        )}
         <i className="fa-solid fa-cart-shopping"></i>
         {cartAmountOfItems > 0 && (
           <div className={styles.counter}>{cartAmountOfItems}</div>
