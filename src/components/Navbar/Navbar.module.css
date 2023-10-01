@@ -19,7 +19,7 @@
   text-decoration: none;
 }
 
-/* Cart Icon */
+/* Cart Container */
 .cart {
   display: flex;
   flex-direction: row;
@@ -42,15 +42,16 @@
 /* Item counter for cart */
 .counter {
   /* Positions counter to the upper right of cart icon */
-  position: relative;
-  top: -15px;
+  position: absolute;
+  top: 0;
+  right: -20px;
 
   font-size: 1rem;
 
   border: 1.5px solid white;
   border-radius: 1000px;
 
-  padding: 2px 5px;
+  padding: 2px 3px;
 }
 
 .total {
