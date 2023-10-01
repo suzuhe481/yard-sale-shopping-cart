@@ -50,5 +50,30 @@
   border: 1.5px solid white;
   border-radius: 1000px;
 
-  padding: 2px;
+  padding: 2px 5px;
+}
+
+.total {
+  font-size: 1.5rem;
+
+  border: 1.5px solid white;
+  border-radius: 1000px;
+
+  padding: 2px 15px;
+}
+
+/* Stylings for mobile */
+@media screen and (max-width: 600px) {
+  .navbar {
+    justify-content: flex-start;
+    padding-left: 15px;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .total {
+    font-size: 1.3rem;
+  }
 }
