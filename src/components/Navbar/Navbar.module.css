@@ -70,6 +70,10 @@
     padding-left: 15px;
   }
 
+  .cart {
+    right: 8%;
+  }
+
   .title {
     font-size: 2rem;
   }
