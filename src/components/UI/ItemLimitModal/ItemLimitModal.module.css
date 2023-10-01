@@ -1,0 +1,64 @@
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  position: fixed;
+  bottom: 50px;
+
+  left: 0;
+  right: 0;
+  margin: auto;
+
+  width: 200px;
+  height: 50px;
+
+  background-color: rgba(233, 232, 232, 0.884);
+  border: 1px solid black;
+  border-radius: 25px;
+
+  padding: 25px 60px;
+
+  animation: slide-up 300ms ease-out forwards;
+}
+
+.modal-message {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.button-container {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+}
+
+.close-button {
+  border-width: 2px;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+/* Stylings for mobile */
+@media screen and (max-width: 600px) {
+  .modal-container {
+    width: 75vw;
+    padding: 25px 35px;
+  }
+
+  .close-button {
+    padding: 10px 15px;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
