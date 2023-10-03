@@ -5,7 +5,8 @@ export const CartContext = createContext({
   cart: [],
   cartTotal: 0,
   cartAmountOfItems: 0,
-  animateCart: false,
+  animateCartItemAdded: false,
+  animateCartItemsRemoved: false,
   addToCart: () => {},
   editCart: () => {},
   removeFromCart: () => {},
@@ -40,7 +41,8 @@ const CartProvider = (props) => {
     return totalItems;
   });
 
-  const [animateCart, setAnimateCart] = useState(false);
+  const [animateCartItemAdded, setAnimateCartItemAdded] = useState(false);
+  const [animateCartItemsRemoved, setAnimateCartItemsRemoved] = useState(false);
 
   // Adding a game to cart
   const addToCart = (game) => {
@@ -89,7 +91,7 @@ const CartProvider = (props) => {
       return (Number(prevTotal) + Number(game.price)).toFixed(2);
     });
     setCartAmountOfItems((prevAmount) => Number(prevAmount) + 1);
-    setAnimateCart(true);
+    setAnimateCartItemAdded(true);
 
     // Update localStorage
     localStorage.setItem("cart", JSON.stringify(newCart));
@@ -167,15 +169,17 @@ const CartProvider = (props) => {
     setCartAmountOfItems(
       (prevAmont) => Number(prevAmont) - Number(game.quantity)
     );
+    setAnimateCartItemsRemoved(true);
 
     // Update localStorage
     localStorage.setItem("cart", JSON.stringify(newCart));
   };
 
-  // Stops the animation for cart icon bouncing when item is added.
+  // Stops cart animation after item added or items removed.
   useEffect(() => {
     const timer = setTimeout(() => {
-      setAnimateCart(false);
+      setAnimateCartItemAdded(false);
+      setAnimateCartItemsRemoved(false);
     }, 1000);
 
     return () => {
@@ -189,7 +193,8 @@ const CartProvider = (props) => {
         cart,
         cartTotal,
         cartAmountOfItems,
-        animateCart,
+        animateCartItemAdded,
+        animateCartItemsRemoved,
         addToCart,
         editCart,
         removeFromCart,
