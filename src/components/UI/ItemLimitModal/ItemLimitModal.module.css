@@ -4,6 +4,8 @@
   align-items: center;
   justify-content: center;
 
+  font-family: "Courier New", Courier, monospace;
+
   position: fixed;
   bottom: 50px;
 
