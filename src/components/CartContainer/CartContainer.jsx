@@ -16,7 +16,7 @@ const CartContainer = () => {
     <div className={styles["cart-container"]}>
       <div>
         <p className={styles["cart-title"]}>
-          Your Cart - ${Number(cartTotal).toFixed(2)}
+          Your Cart - ${cartTotal.toFixed(2)}
         </p>
       </div>
       <div>{CartList}</div>
