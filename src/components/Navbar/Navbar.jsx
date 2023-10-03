@@ -5,7 +5,12 @@ import { CartContext } from "../../CartProvider";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
-  const { cartAmountOfItems, cartTotal, animateCart } = useContext(CartContext);
+  const {
+    cartAmountOfItems,
+    cartTotal,
+    animateCartItemAdded,
+    animateCartItemsRemoved,
+  } = useContext(CartContext);
 
   return (
     <div className={styles.navbar}>
@@ -18,8 +23,8 @@ const Navbar = () => {
         )}
         <i
           className={`${styles["cart-icon"]} fa-solid fa-cart-shopping ${
-            animateCart && "fa-bounce"
-          }`}
+            animateCartItemAdded && "fa-bounce"
+          } ${animateCartItemsRemoved && "fa-shake"}`}
         ></i>
 
         {cartAmountOfItems > 0 && (
