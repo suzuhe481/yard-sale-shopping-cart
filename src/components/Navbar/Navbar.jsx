@@ -14,7 +14,7 @@ const Navbar = () => {
       </Link>
       <Link to="/cart" className={styles.cart}>
         {cartAmountOfItems > 0 && (
-          <div className={styles.total}>${cartTotal.toFixed(2)}</div>
+          <div className={styles.total}>${Number(cartTotal).toFixed(2)}</div>
         )}
         <i className="fa-solid fa-cart-shopping"></i>
         {cartAmountOfItems > 0 && (
