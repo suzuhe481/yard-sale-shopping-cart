@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import GameCard from "../GameCard/GameCard";
 import ItemAddedModal from "../UI/ItemAddedModal/ItemAddedModal";
 import ItemLimitModal from "../UI/ItemLimitModal/ItemLimitModal";
+import ToggleSwitch from "../UI/ToggleSwitch/ToggleSwitch";
 import { CartContext } from "../../CartProvider";
 
 import styles from "./GamesContainer.module.css";
@@ -41,6 +42,7 @@ const readData = () => {
 const GamesContainer = () => {
   const [itemAdded, setItemAdded] = useState(false);
   const [itemLimitReached, setItemLimitReached] = useState(false);
+  const [category, setCategory] = useState("RETRO");
 
   const { cartAmountOfItems } = useContext(CartContext);
 
@@ -68,8 +70,13 @@ const GamesContainer = () => {
     };
   }, [itemAdded, cartAmountOfItems, itemLimitReached]);
 
+  useEffect(() => {
+    console.log("In GamesContainer: ", category);
+  }, [category]);
+
   return (
     <>
+      <ToggleSwitch category={category} setCategory={setCategory} />
       <div className={styles["games-container"]}>{GameCards}</div>;
       {itemAdded && <ItemAddedModal setItemAdded={setItemAdded} />}
       {itemLimitReached && (
