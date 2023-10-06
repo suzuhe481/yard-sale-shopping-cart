@@ -10686,4 +10686,4 @@ const modernData = {
   nofollow_collections: ["stores"],
 };
 
-export default randomData;
+export default modernData;
