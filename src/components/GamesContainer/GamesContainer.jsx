@@ -8,8 +8,10 @@ import { CartContext } from "../../CartProvider";
 
 import styles from "./GamesContainer.module.css";
 
-import retroData from "../../assets/snesData";
-import modernData from "../../assets/randomData";
+import snesData from "../../assets/snesData";
+import ps1Data from "../../assets/ps1Data";
+import xboxData from "../../assets/xboxData";
+import modernData from "../../assets/modernData";
 
 // Reads data and transforms it into a separate "games" array with objects.
 const readData = (category) => {
@@ -17,14 +19,20 @@ const readData = (category) => {
 
   // Gets appropriate data based on category picked.
   switch (category) {
-    case "RETRO":
-      gamesJSON = retroData.results;
+    case "SNES":
+      gamesJSON = snesData.results;
+      break;
+    case "PS1":
+      gamesJSON = ps1Data.results;
+      break;
+    case "XBOX":
+      gamesJSON = xboxData.results;
       break;
     case "MODERN":
       gamesJSON = modernData.results;
       break;
     default:
-      gamesJSON = retroData.results;
+      gamesJSON = snesData.results;
       break;
   }
 
@@ -73,10 +81,10 @@ const GamesContainer = () => {
     // If no localStorage exists for category
     if (categoryData === null) {
       // Set state
-      setCategory("RETRO");
+      setCategory("SNES");
 
       // Set new localStorage
-      localStorage.setItem("category", JSON.stringify("RETRO"));
+      localStorage.setItem("category", JSON.stringify("SNES"));
     }
   }, []);
 
