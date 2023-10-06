@@ -16,6 +16,8 @@
   box-shadow: 3px 3px 3px gray;
 
   padding: 10px;
+
+  animation: slide-up 300ms ease-out forwards;
 }
 
 .image-container {
@@ -57,4 +59,15 @@
 
 .limit-notice {
   font-size: 0.9rem;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(3rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
