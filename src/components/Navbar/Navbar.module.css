@@ -13,6 +13,8 @@
   background-color: rgb(102, 101, 101);
 
   padding: 20px 0;
+
+  z-index: 1;
 }
 
 .title {
