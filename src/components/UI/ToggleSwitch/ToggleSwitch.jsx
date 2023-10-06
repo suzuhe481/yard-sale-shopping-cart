@@ -4,10 +4,14 @@ import styles from "./ToggleSwitch.module.css";
 
 const switchCategory = (props, newCategory) => {
   props.setCategory(newCategory);
+
+  // Update localStorage
+  localStorage.setItem("category", JSON.stringify(newCategory));
 };
 
 const ToggleSwitch = (props) => {
-  const category = props.category;
+  // Get category from localStorage
+  const category = JSON.parse(localStorage.getItem("category"));
 
   return (
     <div className={styles["toggle-container"]}>
@@ -19,24 +23,11 @@ const ToggleSwitch = (props) => {
         onClick={() => {
           switchCategory(props, "RETRO");
         }}
-        checked={category === "RETRO" ? "checked" : ""}
+        checked={category === "RETRO" ? true : false}
+        onChange={() => {}}
       />
       <label className={styles.label} htmlFor="retro">
-        <div>Retro</div>
-      </label>
-
-      <input
-        id="modern"
-        className={styles.radio}
-        name="selection"
-        type="radio"
-        onClick={() => {
-          switchCategory(props, "MODERN");
-        }}
-        checked={category === "MODERN" ? "checked" : ""}
-      />
-      <label className={styles.label} htmlFor="modern">
-        <div>Modern</div>
+        <div>SNES</div>
       </label>
 
       <input
@@ -50,7 +41,7 @@ const ToggleSwitch = (props) => {
         checked={category === "CLASSIC" ? "checked" : ""}
       />
       <label className={styles.label} htmlFor="classic">
-        <div>Classic</div>
+        <div>PS1</div>
       </label>
 
       <input
@@ -64,7 +55,22 @@ const ToggleSwitch = (props) => {
         checked={category === "FUTURISTIC" ? "checked" : ""}
       />
       <label className={styles.label} htmlFor="futuristic">
-        <div>Futuristic</div>
+        <div>Xbox</div>
+      </label>
+
+      <input
+        id="modern"
+        className={styles.radio}
+        name="selection"
+        type="radio"
+        onClick={() => {
+          switchCategory(props, "MODERN");
+        }}
+        checked={category === "MODERN" ? true : false}
+        onChange={() => {}}
+      />
+      <label className={styles.label} htmlFor="modern">
+        <div>Modern</div>
       </label>
     </div>
   );
