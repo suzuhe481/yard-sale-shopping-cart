@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ScrollToTopButton from "../UI/ScrollToTopButton/ScrollToTopButton";
 import { useContext } from "react";
 import { CartContext } from "../../CartProvider";
 
@@ -31,6 +32,7 @@ const Navbar = () => {
           <div className={styles.counter}>{cartAmountOfItems}</div>
         )}
       </Link>
+      <ScrollToTopButton />
     </div>
   );
 };
