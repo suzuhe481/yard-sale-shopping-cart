@@ -8,12 +8,25 @@ import { CartContext } from "../../CartProvider";
 
 import styles from "./GamesContainer.module.css";
 
-// import snesData from "../../assets/snesData";
-import randomData from "../../assets/randomData";
+import retroData from "../../assets/snesData";
+import modernData from "../../assets/randomData";
 
 // Reads data and transforms it into a separate "games" array with objects.
-const readData = () => {
-  const gamesJSON = randomData.results;
+const readData = (category) => {
+  var gamesJSON;
+
+  // Gets appropriate data based on category picked.
+  switch (category) {
+    case "RETRO":
+      gamesJSON = retroData.results;
+      break;
+    case "MODERN":
+      gamesJSON = modernData.results;
+      break;
+    default:
+      gamesJSON = retroData.results;
+      break;
+  }
 
   const games = [];
 
@@ -40,22 +53,32 @@ const readData = () => {
 };
 
 const GamesContainer = () => {
+  const [gamesData, setGamesData] = useState([]);
+  const [GameCards, setGamesCards] = useState("");
   const [itemAdded, setItemAdded] = useState(false);
   const [itemLimitReached, setItemLimitReached] = useState(false);
-  const [category, setCategory] = useState("RETRO");
+  const [category, setCategory] = useState(() => {
+    const categoryData = localStorage.getItem("category");
+
+    return categoryData ? JSON.parse(categoryData) : "";
+  });
 
   const { cartAmountOfItems } = useContext(CartContext);
 
-  const gamesData = readData();
+  // On initial page load
+  // Update category state to default and save to localStorage
+  useEffect(() => {
+    const categoryData = JSON.parse(localStorage.getItem("category"));
 
-  const GameCards = gamesData.map((game) => (
-    <GameCard
-      key={game.id}
-      game={game}
-      setItemAdded={setItemAdded}
-      setItemLimitReached={setItemLimitReached}
-    />
-  ));
+    // If no localStorage exists for category
+    if (categoryData === null) {
+      // Set state
+      setCategory("RETRO");
+
+      // Set new localStorage
+      localStorage.setItem("category", JSON.stringify("RETRO"));
+    }
+  }, []);
 
   // Hides Item Added Modal
   useEffect(() => {
@@ -70,14 +93,29 @@ const GamesContainer = () => {
     };
   }, [itemAdded, cartAmountOfItems, itemLimitReached]);
 
+  // Gets and sets Games Data
   useEffect(() => {
-    console.log("In GamesContainer: ", category);
+    setGamesData(readData(category));
   }, [category]);
+
+  // Creates GameCards
+  useEffect(() => {
+    setGamesCards(
+      gamesData.map((game) => (
+        <GameCard
+          key={game.id}
+          game={game}
+          setItemAdded={setItemAdded}
+          setItemLimitReached={setItemLimitReached}
+        />
+      ))
+    );
+  }, [gamesData]);
 
   return (
     <>
       <ToggleSwitch category={category} setCategory={setCategory} />
-      <div className={styles["games-container"]}>{GameCards}</div>;
+      <div className={styles["games-container"]}>{GameCards}</div>
       {itemAdded && <ItemAddedModal setItemAdded={setItemAdded} />}
       {itemLimitReached && (
         <ItemLimitModal setItemLimitReached={setItemLimitReached} />
