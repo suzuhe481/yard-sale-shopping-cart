@@ -16,45 +16,47 @@ const ToggleSwitch = (props) => {
   return (
     <div className={styles["toggle-container"]}>
       <input
-        id="retro"
+        id="snes"
         className={styles.radio}
         name="selection"
         type="radio"
         onClick={() => {
-          switchCategory(props, "RETRO");
+          switchCategory(props, "SNES");
         }}
-        checked={category === "RETRO" ? true : false}
+        checked={category === "SNES" ? true : false}
         onChange={() => {}}
       />
-      <label className={styles.label} htmlFor="retro">
+      <label className={styles.label} htmlFor="snes">
         <div>SNES</div>
       </label>
 
       <input
-        id="classic"
+        id="ps1"
         className={styles.radio}
         name="selection"
         type="radio"
         onClick={() => {
-          switchCategory(props, "CLASSIC");
+          switchCategory(props, "PS1");
         }}
-        checked={category === "CLASSIC" ? "checked" : ""}
+        checked={category === "PS1" ? "checked" : ""}
+        onChange={() => {}}
       />
-      <label className={styles.label} htmlFor="classic">
+      <label className={styles.label} htmlFor="ps1">
         <div>PS1</div>
       </label>
 
       <input
-        id="futuristic"
+        id="xbox"
         className={styles.radio}
         name="selection"
         type="radio"
         onClick={() => {
-          switchCategory(props, "FUTURISTIC");
+          switchCategory(props, "XBOX");
         }}
-        checked={category === "FUTURISTIC" ? "checked" : ""}
+        checked={category === "XBOX" ? "checked" : ""}
+        onChange={() => {}}
       />
-      <label className={styles.label} htmlFor="futuristic">
+      <label className={styles.label} htmlFor="xbox">
         <div>Xbox</div>
       </label>
 
