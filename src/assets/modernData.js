@@ -1,4 +1,4 @@
-const randomData = {
+const modernData = {
   count: 853964,
   next: "https://api.rawg.io/api/games?key=cc93eeb5ff454e2fb3e1cb4be35735d9&page=2",
   previous: null,
