@@ -36,11 +36,15 @@ const readData = (category) => {
       break;
   }
 
+  return gamesJSON;
+};
+
+const formatData = (data) => {
   const games = [];
 
   // Gets each games id, name, background image, and platforms.
   // Hardcoded price added since API doesn't supply price.
-  gamesJSON.forEach((game) => {
+  data.forEach((game) => {
     const gameObject = {};
 
     gameObject.id = game.id;
@@ -103,7 +107,10 @@ const GamesContainer = () => {
 
   // Gets and sets Games Data
   useEffect(() => {
-    setGamesData(readData(category));
+    const newData = readData(category);
+    const formattedData = formatData(newData);
+
+    setGamesData(formattedData);
   }, [category]);
 
   // Creates GameCards
