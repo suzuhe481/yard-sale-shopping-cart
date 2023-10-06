@@ -1,0 +1,26 @@
+.button-container {
+  position: fixed;
+
+  bottom: 20px;
+  left: 20px;
+}
+
+.button-container button {
+  height: 60px;
+  width: 60px;
+  border-radius: 100px;
+  border: none;
+
+  background-color: gray;
+
+  color: white;
+
+  cursor: pointer;
+
+  /* Size of arrow */
+  font-size: 2rem;
+}
+
+.arrow-up {
+  color: white;
+}
