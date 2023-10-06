@@ -9,6 +9,8 @@
   flex-grow: 1;
 
   padding-bottom: 50px;
+
+  min-height: 100vh;
 }
 
 .cart-title {
