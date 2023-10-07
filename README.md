@@ -14,6 +14,18 @@ This project was build using React to get practice with Routing and the State ho
 
 ## Releases
 
+### Release 3
+
+- Total displayed by cart icon.
+- Animated notifications when adding items to cart, or when item limit is reached.
+- Navbar remains stickied to the top while scrolling.
+- Font changes.
+- New games categories.
+- Toggle button to switch between different categories.
+- Cart icon animations when items are added/deleted.
+- Animations for game cards.
+- Scroll to the top button.
+
 ### Release 2
 
 - Context hook is used to better pass values to components.
